@@ -7,14 +7,17 @@
       xmlns:local="clr-namespace:mandelbrot.Views" xmlns:viewmodels="clr-namespace:mandelbrot.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="400"
-      Title="screen">
+      Title="screen"
+
+>
 
     
         
-        <Grid MouseMove="VMouseMove">
+        <Grid >
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Image Name ="S1" Source="{Binding FractalImage}" Width="400" Height="400" />
-                <TextBlock Text="{Binding Px}"/>
+            <Image Name ="S1" Source="{Binding FractalImage}" Width="400" Height="400" />
+                <TextBlock Text="{Binding MpX}" />
+                <TextBlock Text="{Binding MpY}" />
                 <Button Content="Render"
                     Width="80" Height="24"
                     Margin="0,8,0,0"

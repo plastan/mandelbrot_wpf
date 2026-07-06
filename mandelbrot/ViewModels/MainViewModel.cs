@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
+// using System.Drawing;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -14,10 +14,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Xml.Linq;
-
+using System.Windows;
 namespace mandelbrot.ViewModels
 {
-    internal class MainViewModel : ViewModelBase
+    internal class MainViewModel : ViewModelBase  
     {
         private readonly IFractalComputer _fractalComputer;
         private readonly Params p;
@@ -28,8 +28,29 @@ namespace mandelbrot.ViewModels
             RenderCommand = new RelayCommand(Render);
             p = new Params();
         }
+        private Point _mp;
+        public Point Mp{
+          get => _mp;
+          set{
+            // if (_mp == value)
+            //         return;
+            _mp = value;
+            OnPropertyChanged(nameof(Mp));
+            OnPropertyChanged(nameof(MpX));
+            OnPropertyChanged(nameof(MpY));
+          }
+        }
+        public double MpX => Mp.X;
+        public double MpY => Mp.Y;
 
-        public int Px;
+        public void UpdateMouse(Point p)
+        {
+        Mp = p;  
+        }
+
+        // public event PropertyChangedEventHandler PropertyChanged;
+        // protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
         private BitmapSource _fractalImage;
         public BitmapSource FractalImage
         {
@@ -46,14 +67,17 @@ namespace mandelbrot.ViewModels
         private void Render(){
             int[,] data = _fractalComputer.Compute(p);
             FractalImage = ConvertToBitmap(data);
+            // MessageBox.Show("Hello, world!");
             
-            //Debug.WriteLine($"Bitmap created: {FractalImage != null}, size {FractalImage?.Width}x{FractalImage?.Height}");
-            //using (var stream = new FileStream(@"C:\Users\aksdfj\source\repos\mandelbrot\fractal_debug.png", FileMode.Create))
-            //{
-            //    var encoder = new PngBitmapEncoder();
-            //    encoder.Frames.Add(BitmapFrame.Create(FractalImage));
-            //    encoder.Save(stream);
-            //}
+            // Debug.WriteLine($"Bitmap created: {FractalImage != null}, size {FractalImage?.Width}x{FractalImage?.Height}");
+            // MessageBox.Show($"Bitmap created: {FractalImage?.Width} x {FractalImage?.Height}");
+            // MessageBox.Show(GetType().Name ?? "null");
+            // using (var stream = new FileStream(@"C:\Users\fractal_debug.png", FileMode.Create))
+            // {
+            //     var encoder = new PngBitmapEncoder();
+            //     encoder.Frames.Add(BitmapFrame.Create(FractalImage));
+            //     encoder.Save(stream);
+            // }
 
         }
 
@@ -101,12 +125,6 @@ namespace mandelbrot.ViewModels
 
 
         public System.Windows.Point MousePosition{get;private set;}
-        public void UpdateMousePosition(System.Windows.Point p){
-          MousePosition = p;
-          Px = (int)p.X;
-
-          
-        }
 
     }
 }

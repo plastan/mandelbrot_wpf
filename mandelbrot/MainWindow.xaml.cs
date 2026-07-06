@@ -9,13 +9,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using mandelbrot.ViewModels;
 namespace mandelbrot
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window , INotifyPropertyChanged
+    public partial class MainWindow : Window  
     {
         public MainWindow()
         {
@@ -43,7 +43,9 @@ namespace mandelbrot
         {
 
             Point P = e.GetPosition(this);
-            this.X = (int)P.X;
+            if (DataContext is MainViewModel vm){
+              vm.UpdateMouse(P);
+            }
 
 
 
