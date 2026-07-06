@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:mandelbrot" xmlns:views="clr-namespace:mandelbrot.Views"
         mc:Ignorable="d"
         MouseMove="Window_MouseMove"
+        MouseRightButtonDown="Window_MouseRightButton"
         Title="MainWindow" Height="800" Width="800">
+
     <views:screen />
 </Window>

@@ -20,7 +20,7 @@ namespace mandelbrot.ViewModels
     internal class MainViewModel : ViewModelBase  
     {
         private readonly IFractalComputer _fractalComputer;
-        private readonly Params p;
+        private Params p;
 
         public MainViewModel(IFractalComputer fc)
         {
@@ -28,12 +28,28 @@ namespace mandelbrot.ViewModels
             RenderCommand = new RelayCommand(Render);
             p = new Params();
         }
+
+      private Point _tp;
+      public Point Tp{
+        get => _tp;
+        set {
+          _tp = value;
+            OnPropertyChanged(nameof(Tp));
+            OnPropertyChanged(nameof(TpX));
+            OnPropertyChanged(nameof(TpY));
+
+        }
+      }
+
+        public double TpX => Tp.X;
+        public double TpY => Tp.Y;
+
         private Point _mp;
         public Point Mp{
           get => _mp;
           set{
-            // if (_mp == value)
-            //         return;
+            if (_mp == value)
+            return;
             _mp = value;
             OnPropertyChanged(nameof(Mp));
             OnPropertyChanged(nameof(MpX));
@@ -42,7 +58,7 @@ namespace mandelbrot.ViewModels
         }
         public double MpX => Mp.X;
         public double MpY => Mp.Y;
-
+    
         public void UpdateMouse(Point p)
         {
         Mp = p;  
@@ -120,10 +136,20 @@ namespace mandelbrot.ViewModels
         {
             return outMin + (value - inMin) * (outMax - outMin) / (inMax - inMin);
         }
-       
 
+        internal void HandleRightClick(Point point)
+        {
 
+          double nx = map(point.X,0,p.Width,p.CenterX - p.Range,p.CenterX + p.Range);
+          double ny = map(point.Y,0,p.Height,p.CenterY - p.Range,p.CenterY + p.Range);
+          Tp = new Point(nx,ny);
+          p.CenterX = nx;
+          p.CenterY = ny;
 
+          p.Range = p.Range*.2;
+          this.Render();
+
+        }
         public System.Windows.Point MousePosition{get;private set;}
 
     }

@@ -14,6 +14,8 @@ namespace mandelbrot.Models
         public double scale { get; set; } = 0.1;
         public int Width { get; set; } = 600;
         public int Height { get; set; } = 600;
+        public double Range = 1;
+        public double Zoom {get; set;} = 10.0;
 
     }
 }
