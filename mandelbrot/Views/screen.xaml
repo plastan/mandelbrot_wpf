@@ -1,0 +1,24 @@
+﻿<Page x:Class="mandelbrot.Views.screen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+      xmlns:local="clr-namespace:mandelbrot.Views" xmlns:viewmodels="clr-namespace:mandelbrot.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="400"
+      Title="screen">
+
+    
+        
+        <Grid>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Name ="S1" Source="{Binding FractalImage}" Width="400" Height="400" />
+                <Button Content="Render"
+                    Width="80" Height="24"
+                    Margin="0,8,0,0"
+                    Command="{Binding RenderCommand, diag:PresentationTraceSources.TraceLevel=High}" />
+            </StackPanel>
+        </Grid>
+    
+</Page>
