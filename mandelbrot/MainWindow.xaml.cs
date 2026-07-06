@@ -23,38 +23,7 @@ namespace mandelbrot
             DataContext = this;
 
         }
-        private int _x;
-        public int X
-        {
-            get => _x;
-            set
-            {
-                if(_x != value)
-                {
-                    _x = value;
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(X)));
-                }
-            }
-        }
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void Window_MouseMove(object sender, MouseEventArgs e)
-        {
-
-            Point P = e.GetPosition(this);
-            if (DataContext is MainViewModel vm){
-              vm.UpdateMouse(P);
-            }
-        }
-        private void  Window_MouseRightButton(object sender, MouseEventArgs e){
-          if (DataContext is MainViewModel vm){
-
-            Point P = e.GetPosition(this);
-            vm.HandleRightClick(P);
-
-          }
-
-        }
     }
 }

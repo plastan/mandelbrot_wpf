@@ -8,22 +8,33 @@
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="400"
       Title="screen"
+      MouseMove="Window_MouseMove"
+      MouseRightButtonDown="Window_MouseRightButton"
+
 
 >
 
     
     <Page.InputBindings>
-    <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding ResetCommand}"/>
-</Page.InputBindings>
+      <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding ResetCommand}"/>
+    </Page.InputBindings>
         <Grid >
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image Name ="S1" Source="{Binding FractalImage}" Stretch="Fill" SizeChanged="FractalImage_SizeChanged" />
+          <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+                <Image Grid.Row="0" Name ="S1" Source="{Binding FractalImage}" Stretch="Fill" SizeChanged="FractalImage_SizeChanged" />
+          <StackPanel Grid.Row="1"
+                Orientation="Vertical"
+                HorizontalAlignment="Center"
+                Margin="0,8,0,8">
                 <TextBlock Text="{Binding MpX}" />
                 <TextBlock Text="{Binding MpY}" />
 
                 <TextBlock Text="{Binding Tp.X}" />
                 <TextBlock Text="{Binding Tp.Y}" />
 
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Content="Render"
                     Width="80" Height="24"
                     Margin="0,8,0,0"
@@ -34,6 +45,7 @@
                     Command="{Binding ResetCommand, diag:PresentationTraceSources.TraceLevel=High}" />
 
             </StackPanel>
+          </StackPanel>
         </Grid>
     
 </Page>
