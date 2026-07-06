@@ -46,7 +46,7 @@ namespace mandelbrot.Models
             int n = 0;
 
 
-            while ((n < p.MaxIterations) && (Tr + Ti) <= 4.0)
+            while ((n < p.MaxIterations) && (Tr + Ti) <= EscapeRadiusSqure)
             {
                 Zi = 2 * Zr * Zi + Ci;
                 Zr = Tr - Ti + Cr;

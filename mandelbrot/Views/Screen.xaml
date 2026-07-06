@@ -1,4 +1,4 @@
-﻿<Page x:Class="mandelbrot.Views.screen"
+﻿<Page x:Class="mandelbrot.Views.Screen"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:mandelbrot.Views" xmlns:viewmodels="clr-namespace:mandelbrot.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="400"
-      Title="screen"
+      Title="Screen"
       MouseMove="Window_MouseMove"
       MouseRightButtonDown="Window_MouseRightButton"
 

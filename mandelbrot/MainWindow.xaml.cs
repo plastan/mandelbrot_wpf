@@ -23,7 +23,6 @@ namespace mandelbrot
             DataContext = this;
 
         }
-        public event PropertyChangedEventHandler? PropertyChanged;
 
     }
 }

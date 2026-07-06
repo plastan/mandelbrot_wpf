@@ -19,11 +19,11 @@ namespace mandelbrot.Views
     /// <summary>
     /// Interaction logic for screen.xaml
     /// </summary>
-    public partial class screen : Page
+    public partial class Screen : Page
     {
         //private WriteableBitmap bitmap;
 
-        public screen()
+        public Screen()
         {
             InitializeComponent();
             
