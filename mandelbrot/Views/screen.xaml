@@ -18,6 +18,10 @@
             <Image Name ="S1" Source="{Binding FractalImage}" Width="400" Height="400" />
                 <TextBlock Text="{Binding MpX}" />
                 <TextBlock Text="{Binding MpY}" />
+
+                <TextBlock Text="{Binding Tp.X}" />
+                <TextBlock Text="{Binding Tp.Y}" />
+
                 <Button Content="Render"
                     Width="80" Height="24"
                     Margin="0,8,0,0"

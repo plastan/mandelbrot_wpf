@@ -46,8 +46,14 @@ namespace mandelbrot
             if (DataContext is MainViewModel vm){
               vm.UpdateMouse(P);
             }
+        }
+        private void  Window_MouseRightButton(object sender, MouseEventArgs e){
+          if (DataContext is MainViewModel vm){
 
+            Point P = e.GetPosition(this);
+            vm.HandleRightClick(P);
 
+          }
 
         }
     }
