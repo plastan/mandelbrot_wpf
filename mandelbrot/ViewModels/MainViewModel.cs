@@ -64,8 +64,6 @@ namespace mandelbrot.ViewModels
         Mp = p;  
         }
 
-        // public event PropertyChangedEventHandler PropertyChanged;
-        // protected void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         private BitmapSource _fractalImage;
         public BitmapSource FractalImage
@@ -74,8 +72,6 @@ namespace mandelbrot.ViewModels
             set {  _fractalImage = value; OnPropertyChanged();  }
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //protected void OnPropertyChanged([CallerMemberName] string name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
        
 
@@ -116,7 +112,6 @@ namespace mandelbrot.ViewModels
                 //double aspect = (double)height/width;
 
 
-                //byte c = (byte)(255 - (iter * 255 / iqgitterations));
                 byte c = (byte)data[x, y];
 
 
