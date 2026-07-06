@@ -19,13 +19,13 @@ namespace mandelbrot.Models
                 for (int col = 0; col < p.Height; col++){
                     double xx = map(row, 0, p.Width, -2, 2);
                     double yy = map(col, 0, p.Height, 2, -2);
-                    res[row, col] = (255-Iterate(xx, yy) * 255 / Params.MaxIterations); 
+                    res[row, col] = (255-Iterate(xx, yy,p) * 255 / p.MaxIterations); 
                     
                     }
             }
             return res;
         }
-        public int Iterate(double Cr, double Ci)
+        public int Iterate(double Cr, double Ci,Params p)
         {
             double Zr = 0;
             double Zi = 0;
@@ -35,7 +35,7 @@ namespace mandelbrot.Models
             int n = 0;
 
 
-            while ((n < Params.MaxIterations) && (Tr + Ti) <= 4.0)
+            while ((n < p.MaxIterations) && (Tr + Ti) <= 4.0)
             {
                 Zi = 2 * Zr * Zi + Ci;
                 Zr = Tr - Ti + Cr;

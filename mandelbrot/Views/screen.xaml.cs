@@ -34,6 +34,10 @@ namespace mandelbrot.Views
             //CanvasImage.Source = bitmap;
             //FillWhite();
         }
+        private void VMouseMove(object sender, MouseEventArgs e){
+          var pos = e.GetPosition((IInputElement) sender);
+
+        }
 //        private int iterations = 50;
 //        private int er = 4;
 

@@ -29,6 +29,7 @@ namespace mandelbrot.ViewModels
             p = new Params();
         }
 
+        public int Px;
         private BitmapSource _fractalImage;
         public BitmapSource FractalImage
         {
@@ -42,8 +43,7 @@ namespace mandelbrot.ViewModels
        
 
         public ICommand RenderCommand { get; }
-        private void Render()
-        {
+        private void Render(){
             int[,] data = _fractalComputer.Compute(p);
             FractalImage = ConvertToBitmap(data);
             
@@ -96,6 +96,17 @@ namespace mandelbrot.ViewModels
         {
             return outMin + (value - inMin) * (outMax - outMin) / (inMax - inMin);
         }
-        
+       
+
+
+
+        public System.Windows.Point MousePosition{get;private set;}
+        public void UpdateMousePosition(System.Windows.Point p){
+          MousePosition = p;
+          Px = (int)p.X;
+
+          
+        }
+
     }
 }

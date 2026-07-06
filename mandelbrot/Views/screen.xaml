@@ -11,9 +11,10 @@
 
     
         
-        <Grid>
+        <Grid MouseMove="VMouseMove">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Name ="S1" Source="{Binding FractalImage}" Width="400" Height="400" />
+                <TextBlock Text="{Binding Px}"/>
                 <Button Content="Render"
                     Width="80" Height="24"
                     Margin="0,8,0,0"
