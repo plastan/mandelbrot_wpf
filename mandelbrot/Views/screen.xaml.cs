@@ -35,6 +35,15 @@ namespace mandelbrot.Views
             //FillWhite();
         }
 
+        internal void FractalImage_SizeChanged(object sender, SizeChangedEventArgs e){
+          if (e.NewSize.Width < 1 || e.NewSize.Height < 1) return;
+            if (DataContext is MainViewModel vm){
+              vm.UpdateWindowSize(e.NewSize.Width,e.NewSize.Height);
+            }
+
+        }
+
+
 //        private int iterations = 50;
 //        private int er = 4;
 

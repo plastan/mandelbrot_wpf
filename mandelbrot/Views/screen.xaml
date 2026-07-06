@@ -12,10 +12,12 @@
 >
 
     
-        
+    <Page.InputBindings>
+    <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding ResetCommand}"/>
+</Page.InputBindings>
         <Grid >
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image Name ="S1" Source="{Binding FractalImage}" Width="400" Height="400" />
+            <Image Name ="S1" Source="{Binding FractalImage}" Stretch="Fill" SizeChanged="FractalImage_SizeChanged" />
                 <TextBlock Text="{Binding MpX}" />
                 <TextBlock Text="{Binding MpY}" />
 

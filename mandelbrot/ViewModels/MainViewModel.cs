@@ -154,7 +154,19 @@ namespace mandelbrot.ViewModels
           this.Render();
 
         }
+
+        internal void UpdateWindowSize(double width, double height)
+        {
+          p.Width = (int)width;
+          p.Height= (int)height;
+          Render();
+
+        }
         public System.Windows.Point MousePosition{get;private set;}
 
+
+
+
     }
+
 }
