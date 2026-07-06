@@ -26,6 +26,7 @@ namespace mandelbrot.ViewModels
         {
             _fractalComputer = fc;
             RenderCommand = new RelayCommand(Render);
+            ResetCommand = new RelayCommand(Reset);
             p = new Params();
         }
 
@@ -76,6 +77,7 @@ namespace mandelbrot.ViewModels
        
 
         public ICommand RenderCommand { get; }
+        public ICommand ResetCommand {get;}
         private void Render(){
             int[,] data = _fractalComputer.Compute(p);
             FractalImage = ConvertToBitmap(data);
@@ -93,7 +95,14 @@ namespace mandelbrot.ViewModels
 
         }
 
+        private void Reset(){
+          // resent params class to initial values;
+          p.CenterX = -.5;
+          p.CenterY = 0.0;
+          p.Range = 1;
+          Render();
 
+        }
         private BitmapSource ConvertToBitmap(int[,] data)
         {
             int width = data.GetLength(0);

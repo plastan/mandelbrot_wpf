@@ -26,6 +26,11 @@
                     Width="80" Height="24"
                     Margin="0,8,0,0"
                     Command="{Binding RenderCommand, diag:PresentationTraceSources.TraceLevel=High}" />
+                <Button Content="Reset"
+                    Width="80" Height="24"
+                    Margin="0,8,0,0"
+                    Command="{Binding ResetCommand, diag:PresentationTraceSources.TraceLevel=High}" />
+
             </StackPanel>
         </Grid>
     
