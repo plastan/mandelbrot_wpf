@@ -100,6 +100,10 @@ namespace mandelbrot.ViewModels
           p.CenterX = -.5;
           p.CenterY = 0.0;
           p.Range = 1;
+          // Decimal varient
+          p.CenterXD = -.5m;
+          p.CenterYD = 0.0m;
+          p.RangeD = 1m;
           Render();
 
         }
@@ -140,17 +144,32 @@ namespace mandelbrot.ViewModels
         {
             return outMin + (value - inMin) * (outMax - outMin) / (inMax - inMin);
         }
+        private decimal mapD(int value, int inMin, int inMax, decimal outMin, decimal outMax)
+            {
+                return outMin + (value - inMin) * (outMax - outMin) / (inMax - inMin);
+            }
 
         internal void HandleRightClick(Point point)
         {
-
+          if (_fractalComputer.Mode == NumericMode.Double){
           double nx = map(point.X,0,p.Width,p.CenterX - p.Range,p.CenterX + p.Range);
           double ny = map(point.Y,0,p.Height,p.CenterY - p.Range,p.CenterY + p.Range);
-          Tp = new Point(nx,ny);
           p.CenterX = nx;
           p.CenterY = ny;
-
           p.Range = p.Range*.2;
+          Tp = new Point(nx,ny);
+
+          } else{
+          // Decimal varient
+          decimal nx =mapD((int)point.X,0,p.Width,p.CenterXD - p.RangeD,p.CenterXD + p.RangeD);
+          decimal ny =mapD((int)point.Y,0,p.Width,p.CenterYD - p.RangeD,p.CenterYD + p.RangeD);
+          p.CenterXD = nx;
+          p.CenterYD = ny;
+          p.RangeD = p.RangeD*.2m;
+
+          }
+          // decimal nyd = ;
+
           this.Render();
 
         }

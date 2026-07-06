@@ -9,7 +9,7 @@ namespace mandelbrot.Models
     internal class DoubleFractalComputer : IFractalComputer
     {
         private double EscapeRadiusSqure = 4.0;
-
+        public NumericMode Mode => NumericMode.Double;
         public DoubleFractalComputer()
         {
 

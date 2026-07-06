@@ -19,6 +19,7 @@ namespace mandelbrot
         protected override void OnStartup(StartupEventArgs e)
         {
             cc = new DoubleFractalComputer();
+            // cc = new DecimalFractalComputer();
             vm = new MainViewModel(cc);
 
             MainWindow mainWindow = new MainWindow();
