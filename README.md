@@ -50,3 +50,10 @@ wine mandelbrot/bin/Debug/net10.0-windows/mandelbrot.exe
 ```shell
 alias run="wine mandelbrot/bin/Debug/net10.0-windows/mandelbrot.exe"
 ```
+### Screenshots
+
+<img width="763" height="778" alt="image" src="https://github.com/user-attachments/assets/ca07667d-576e-45b4-96bb-f9bfd9e041d8" />
+
+<img width="764" height="783" alt="image" src="https://github.com/user-attachments/assets/4abe1d11-dd40-4be1-816b-6a7a9c9ff84b" />
+
+
