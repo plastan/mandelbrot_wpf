@@ -25,6 +25,7 @@ namespace mandelbrot
             MainWindow mainWindow = new MainWindow();
             mainWindow.DataContext = vm;
             mainWindow.Show();
+
             base.OnStartup(e);
         }
 

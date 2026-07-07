@@ -125,9 +125,7 @@ namespace mandelbrot.ViewModels
                 //double aspect = (double)height/width;
 
 
-                byte c = (byte)data[x, y];
-
-
+                byte c = (byte)Math.Clamp(data[x,y]% 256, 0, 255);
                 pixels[i] = c;     // Blue
                 pixels[i + 1] = c; // Green
                 pixels[i + 2] = c; // Red
@@ -179,6 +177,32 @@ namespace mandelbrot.ViewModels
           p.Width = (int)width;
           p.Height= (int)height;
           Render();
+
+        }
+
+        internal void HandleLeftClick(Point point)
+        {
+          if (_fractalComputer.Mode == NumericMode.Double){
+          double nx = map(point.X,0,p.Width,p.CenterX - p.Range,p.CenterX + p.Range);
+          double ny = map(point.Y,0,p.Height,p.CenterY - p.Range,p.CenterY + p.Range);
+          p.CenterX = nx;
+          p.CenterY = ny;
+          p.Range = p.Range/.2;
+          Tp = new Point(nx,ny);
+
+          } else{
+          // Decimal varient
+          decimal nx =mapD((int)point.X,0,p.Width,p.CenterXD - p.RangeD,p.CenterXD + p.RangeD);
+          decimal ny =mapD((int)point.Y,0,p.Width,p.CenterYD - p.RangeD,p.CenterYD + p.RangeD);
+          p.CenterXD = nx;
+          p.CenterYD = ny;
+          p.RangeD = p.RangeD/.2m;
+
+          }
+          // decimal nyd = ;
+
+          this.Render();
+
 
         }
         public System.Windows.Point MousePosition{get;private set;}

@@ -59,7 +59,15 @@ namespace mandelbrot.Views
           }
 
         }
+        private void  Window_MouseLeftButton(object sender, MouseEventArgs e){
+          if (DataContext is MainViewModel vm){
 
+            System.Windows.Point P = e.GetPosition(this);
+            vm.HandleLeftClick(P);
+
+          }
+
+        }
         }
    
 
