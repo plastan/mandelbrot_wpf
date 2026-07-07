@@ -29,23 +29,24 @@ This project is a work-in-progress fractal visualizer written in C# using WPF an
 ### Building on Linux
 
 * add the following line from `mandelbrot.csproj`:
-```
+```mandelbrot.csproj
 <UseWPF>true</UseWPF>
 ```
 
 * Build with the .NET CLI:
 
-```dotnet build```
+```shell
+dotnet build
+```
 
 * Run the resulting `.exe` with Wine:
 
-```
+```shell
 wine mandelbrot/bin/Debug/net10.0-windows/mandelbrot.exe
 ```
 
 
 * For convenience, set up an alias to run the program:
-```
-
+```shell
 alias run="wine mandelbrot/bin/Debug/net10.0-windows/mandelbrot.exe"
 ```
